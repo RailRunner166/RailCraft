@@ -14,7 +14,13 @@ public class CommandTPA extends RailCommand {
 
 	@Override
 	public void run(CommandSender sender, String[] args) {
+		if (!(sender instanceof Player)) {
+			sender.sendMessage(ChatColor.RED + "You must be a player to run this command!");
+			return;
+		}
+
 		Player p = (Player) sender;
+
 		if (args.length > 0) {
 			final Player target = RailCraft.getInstance().getServer().getPlayer(args[0]);
 
@@ -28,12 +34,8 @@ public class CommandTPA extends RailCommand {
 				return;
 			}
 
-			Location targetLocation = target.getLocation();
-
-			p.sendMessage(ChatColor.BLUE + "Teleporting to " + ChatColor.GREEN + ChatColor.BOLD + target.getName() + ChatColor.RESET + ChatColor.BLUE + "...");
-			target.sendMessage(ChatColor.GREEN.toString() + ChatColor.BOLD + p.getName() + ChatColor.RESET + ChatColor.BLUE + " is teleporting to you.");
-
-			p.teleport(targetLocation);
+			if (!RailCraft.getInstance().getTpaMap().containsKey(target)) RailCraft.getInstance().getTpaMap().put(target, p);
+			else p.sendMessage(ChatColor.RED + "You are already requesting to teleport to this player!");
 		}
 	}
 }

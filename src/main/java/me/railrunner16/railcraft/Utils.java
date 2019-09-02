@@ -1,9 +1,6 @@
 package me.railrunner16.railcraft;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -13,6 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Utils {
+	public static World getDefaultWorld() {
+		return Bukkit.getServer().getWorlds().get(0);
+	}
+
+	public static World getNetherWorld() {
+		return Bukkit.getServer().getWorlds().get(1);
+	}
+
 	public static void broadcastMessage(String text) {
 		for (Player player : Bukkit.getOnlinePlayers()) player.sendMessage(text);
 	}

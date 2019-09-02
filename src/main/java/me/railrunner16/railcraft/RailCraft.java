@@ -7,6 +7,7 @@ import me.railrunner16.railcraft.commands.staff.CommandFly;
 import me.railrunner16.railcraft.kit.Kits;
 import me.railrunner16.railcraft.kit.kits.KitTorch;
 import me.railrunner16.railcraft.mechanics.*;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -15,6 +16,9 @@ public class RailCraft extends JavaPlugin {
 	@Getter
 	private static RailCraft instance;
 	public static HashMap<String, RailCommand> commands = new HashMap<>();
+
+	@Getter
+	private HashMap<Player, Player> tpaMap = new HashMap<>();
 
 	@Override
 	public void onEnable() {
@@ -45,6 +49,7 @@ public class RailCraft extends JavaPlugin {
 		new CommandShovel();
 		new CommandStack();
 		new CommandKit();
+		new CommandTPAccept();
 	}
 
 	private void registerKits() {
@@ -55,6 +60,7 @@ public class RailCraft extends JavaPlugin {
 	public void onDisable() {
 		instance = null;
 		commands.clear();
+		tpaMap.clear();
 	}
 
 	private void registerMechanic(Mechanic mechanic) {

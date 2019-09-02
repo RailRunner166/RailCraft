@@ -1,5 +1,6 @@
 package me.railrunner16.railcraft.commands.player;
 
+import me.railrunner16.railcraft.Utils;
 import me.railrunner16.railcraft.commands.RailCommand;
 import me.railrunner16.railcraft.config.YamlConfig;
 import me.railrunner16.railcraft.data.managers.PlayerDataManager;
@@ -22,6 +23,17 @@ public class CommandHome extends RailCommand {
 
 			YamlConfig yml = PlayerDataManager.getPlayerYaml(p);
 
+
+			if (home.equalsIgnoreCase("bed")) {
+				int x = yml.getInteger("bed.x");
+				int y = yml.getInteger("bed.y");
+				int z = yml.getInteger("bed.z");
+
+				p.sendMessage(formatTeleportMessage("bed"));
+				p.teleport(new Location(Utils.getDefaultWorld(), x, y, z));
+				return;
+			}
+
 			if (!yml.contains("homes." + home)) {
 				p.sendMessage(ChatColor.RED + "You do not have a home with that name.");
 				return;
@@ -33,8 +45,12 @@ public class CommandHome extends RailCommand {
 			double pitch = yml.getDouble("homes." + home + ".pitch");
 			double yaw = yml.getDouble("homes." + home + ".yaw");
 
-			p.sendMessage(ChatColor.BLUE + "Teleporting to home: " + ChatColor.GREEN + ChatColor.BOLD + home + ChatColor.RESET + ChatColor.BLUE + ".");
-			p.teleport(new Location(p.getWorld(), x, y, z, (float) pitch, (float) yaw));
+			p.sendMessage(formatTeleportMessage(home));
+			p.teleport(new Location(Utils.getDefaultWorld(), x, y, z, (float) pitch, (float) yaw));
 		}
+	}
+
+	private String formatTeleportMessage(String home) {
+		return ChatColor.BLUE + "Teleporting to home: " + ChatColor.GREEN + ChatColor.BOLD + home + ChatColor.RESET + ChatColor.BLUE + ".";
 	}
 }
