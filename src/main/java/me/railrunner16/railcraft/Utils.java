@@ -18,6 +18,10 @@ public class Utils {
 		return Bukkit.getServer().getWorlds().get(1);
 	}
 
+	public static String formatTeleportMessage(String s) {
+		return ChatColor.BLUE + "Teleport: " + ChatColor.BOLD + ChatColor.GREEN + s + ChatColor.RESET + ChatColor.BLUE + ".";
+	}
+
 	public static void broadcastMessage(String text) {
 		for (Player player : Bukkit.getOnlinePlayers()) player.sendMessage(text);
 	}

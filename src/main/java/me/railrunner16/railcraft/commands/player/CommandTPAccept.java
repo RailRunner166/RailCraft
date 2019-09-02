@@ -1,6 +1,7 @@
 package me.railrunner16.railcraft.commands.player;
 
 import me.railrunner16.railcraft.RailCraft;
+import me.railrunner16.railcraft.Utils;
 import me.railrunner16.railcraft.commands.RailCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -23,8 +24,10 @@ public class CommandTPAccept extends RailCommand {
 		if (RailCraft.getInstance().getTpaMap().containsKey(p)) {
 			Player teleporting = RailCraft.getInstance().getTpaMap().get(p);
 
-			teleporting.teleport(p);
+			p.sendMessage(ChatColor.BLUE + "Accepted " + teleporting.getName() + "'s request.");
+			teleporting.sendMessage(Utils.formatTeleportMessage(p.getName()));
 
+			teleporting.teleport(p);
 			RailCraft.getInstance().getTpaMap().remove(p);
 		} else {
 			p.sendMessage(ChatColor.RED + "That player is not requesting to teleport to you!");
