@@ -5,6 +5,7 @@ import me.railrunner16.railcraft.commands.RailCommand;
 import me.railrunner16.railcraft.commands.player.*;
 import me.railrunner16.railcraft.commands.staff.CommandFly;
 import me.railrunner16.railcraft.kit.Kits;
+import me.railrunner16.railcraft.kit.kits.KitShovel;
 import me.railrunner16.railcraft.kit.kits.KitTorch;
 import me.railrunner16.railcraft.mechanics.*;
 import org.bukkit.entity.Player;
@@ -29,6 +30,7 @@ public class RailCraft extends JavaPlugin {
 		registerMechanic(new SpawnerMechanic());
 		registerMechanic(new LeashMechanic());
 		registerMechanic(new Kits());
+		registerMechanic(new ToggleMechanic());
 
 		registerCommands();
 		registerKits();
@@ -50,10 +52,12 @@ public class RailCraft extends JavaPlugin {
 		new CommandStack();
 		new CommandKit();
 		new CommandTPAccept();
+		new CommandTPDeny();
 	}
 
 	private void registerKits() {
 		new KitTorch();
+		new KitShovel();
 	}
 
 	@Override

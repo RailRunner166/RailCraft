@@ -38,7 +38,7 @@ public class CommandTPA extends RailCommand {
 				RailCraft.getInstance().getTpaMap().put(target, p);
 
 				p.sendMessage(ChatColor.BLUE + "Requesting telportation to " + target.getName() + ".");
-				target.sendMessage(ChatColor.BLUE + p.getName() + " is requesting to teleport to you. Use " + ChatColor.YELLOW + "/tpaccept" + ChatColor.BLUE + "to accept, or ignore to deny.");
+				target.sendMessage(ChatColor.BLUE + p.getName() + " is requesting to teleport to you. Use " + ChatColor.YELLOW + ChatColor.BOLD + "/tpaccept" + p.getName() + ChatColor.RESET + ChatColor.BLUE + "to accept, or " + ChatColor.YELLOW + ChatColor.BOLD + "/tpdeny" + p.getName() + ChatColor.RESET + ChatColor.BLUE + " to deny.");
 			} else p.sendMessage(ChatColor.RED + "You are already requesting to teleport to this player!");
 		}
 	}

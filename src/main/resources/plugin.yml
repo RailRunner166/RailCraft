@@ -1,5 +1,5 @@
 name: RailCraft
-version: 1.1.4-r1
+version: 1.1.4-r2
 author: RailRunner16
 main: me.railrunner16.railcraft.RailCraft
 api-version: 1.13
@@ -55,6 +55,9 @@ commands:
   tpaccept:
     description: "Accept a TPA request"
     usage: "/tpaccept <player>"
+  tpdeny:
+    description: "Deny a TPA request"
+    usage: "/tpdeny <player>"
   back:
     description: "Go back to your last location"
     usage: "/back"

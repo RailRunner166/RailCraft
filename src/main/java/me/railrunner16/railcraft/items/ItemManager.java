@@ -37,7 +37,9 @@ public class ItemManager {
 	public static ItemStack makeSkull(String username) {
 		ItemStack item = new ItemStack(Material.PLAYER_HEAD, 1);
 
-		return Bukkit.getUnsafe().modifyItemStack(item,"{SkullOwner:\"" + username + "\"}");
+		Bukkit.getUnsafe().modifyItemStack(item,"{SkullOwner:\"" + username + "\"}");
+
+		return item;
 	}
 
 	public static ItemStack makeShovel() {
