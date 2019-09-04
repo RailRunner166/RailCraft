@@ -1,8 +1,12 @@
 package me.railrunner16.railcraft;
 
+import me.railrunner16.railcraft.data.managers.PlayerDataManager;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.command.BlockCommandSender;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -128,5 +132,10 @@ public class Utils {
 
 			return pixelSize;
 		}
+	}
+
+	public static EnumRank getRank(CommandSender sender) {
+		return sender instanceof Player ? EnumRank.getByName(PlayerDataManager.getPlayerYaml((Player) sender).getString("rank"))
+			: (sender instanceof ConsoleCommandSender || sender instanceof BlockCommandSender ? EnumRank.ADMIN : EnumRank.PLAYER);
 	}
 }

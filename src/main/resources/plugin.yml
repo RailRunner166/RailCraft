@@ -1,5 +1,5 @@
 name: RailCraft
-version: 1.1.4-r2
+version: 1.1.5
 author: RailRunner16
 main: me.railrunner16.railcraft.RailCraft
 api-version: 1.13
@@ -61,3 +61,6 @@ commands:
   back:
     description: "Go back to your last location"
     usage: "/back"
+  setrank:
+    description: "Set a user's rank"
+    usage: "/setrank <player> <rank>"

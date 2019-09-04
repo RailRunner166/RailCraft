@@ -4,6 +4,7 @@ import lombok.Getter;
 import me.railrunner16.railcraft.commands.RailCommand;
 import me.railrunner16.railcraft.commands.player.*;
 import me.railrunner16.railcraft.commands.staff.CommandFly;
+import me.railrunner16.railcraft.commands.staff.CommandSetRank;
 import me.railrunner16.railcraft.kit.Kits;
 import me.railrunner16.railcraft.kit.kits.KitShovel;
 import me.railrunner16.railcraft.kit.kits.KitTorch;
@@ -53,6 +54,7 @@ public class RailCraft extends JavaPlugin {
 		new CommandKit();
 		new CommandTPAccept();
 		new CommandTPDeny();
+		new CommandSetRank();
 	}
 
 	private void registerKits() {

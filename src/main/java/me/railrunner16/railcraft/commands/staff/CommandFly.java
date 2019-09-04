@@ -1,5 +1,6 @@
 package me.railrunner16.railcraft.commands.staff;
 
+import me.railrunner16.railcraft.EnumRank;
 import me.railrunner16.railcraft.Utils;
 import me.railrunner16.railcraft.commands.RailCommand;
 import me.railrunner16.railcraft.config.YamlConfig;
@@ -9,7 +10,7 @@ import org.bukkit.entity.Player;
 
 public class CommandFly extends RailCommand {
 	public CommandFly() {
-		super("fly", "/fly", true);
+		super("fly", "/fly", EnumRank.BUILDER);
 	}
 
 	@Override
@@ -22,6 +23,7 @@ public class CommandFly extends RailCommand {
 
 		YamlConfig yml = PlayerDataManager.getPlayerYaml(p);
 		yml.set("toggles.fly", b);
+		yml.save();
 
 		sender.sendMessage(Utils.formatToggle("Flight", p.getAllowFlight()));
 	}

@@ -27,7 +27,7 @@ public class CommandKit extends RailCommand {
 			Kit kit = Kits.kits.get(kitStr);
 
 			if (kit.requiresOp && !p.isOp()) {
-				p.sendMessage(ChatColor.RED + "You must be a server operator to obtain that kit.");
+				p.sendMessage(ChatColor.RED + "You must be staff to obtain that kit.");
 				return;
 			}
 

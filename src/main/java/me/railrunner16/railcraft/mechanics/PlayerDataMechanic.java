@@ -1,5 +1,6 @@
 package me.railrunner16.railcraft.mechanics;
 
+import me.railrunner16.railcraft.EnumRank;
 import me.railrunner16.railcraft.config.YamlConfig;
 import me.railrunner16.railcraft.data.managers.PlayerDataManager;
 
@@ -22,7 +23,9 @@ public class PlayerDataMechanic extends Mechanic {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent evt) {
 		YamlConfig yml = PlayerDataManager.getPlayerYaml(evt.getPlayer());
-		yml.add("uuid", evt.getPlayer().getUniqueId());
+		yml.add("rank", EnumRank.PLAYER.getName());
+		yml.add("name", evt.getPlayer().getName());
+		yml.save();
 	}
 
 	@EventHandler
